@@ -1,0 +1,23 @@
+.main-container {
+  padding: 10px 20px;
+}
+.header {
+  margin: 20px 0;
+.header-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 7px 0px 5px rgba(13, 248, 158, 0.671);
+    span{
+        font-size: 20px;
+        font-weight: 400;
+        span{
+            margin-left: 10px;
+            font-weight: 300;
+            font-size: 16px;
+            letter-spacing: 5px;
+        }
+      }
+}
+
+}
