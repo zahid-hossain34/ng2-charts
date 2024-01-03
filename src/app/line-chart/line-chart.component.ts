@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {  ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
+import {  ChartConfiguration, ChartOptions, ChartType, ChartTypeRegistry, Plugin } from 'chart.js';
 import { ChartEvent } from 'chart.js/dist/core/core.plugins';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
 
@@ -18,7 +18,7 @@ export class LineChartComponent {
   constructor() {
     // Chart.register(Annotation);
   }
-
+registerPlugin(plugin: Plugin) {}
   public lineChartData: ChartConfiguration['data'] = {
     datasets: [
       {
@@ -50,6 +50,7 @@ export class LineChartComponent {
 
   public lineChartOptions: ChartConfiguration['options'] = {
    responsive: true,
+   maintainAspectRatio: false,
     elements: {
       line: {
         tension: 0.5,
@@ -70,13 +71,26 @@ export class LineChartComponent {
         },
       },
     },
+    // plugins: {
+    //   customCanvasBackgroundColor: {
+    //     color: 'lightGreen',
+    //   }
+    // }
 
-    plugins: {
-      legend: { display: true },
 
-    },
+
   };
-
+  // public plugin = {
+  //   id: 'customCanvasBackgroundColor',
+  //   beforeDraw: (chart, args, options) => {
+  //     const {ctx} = chart;
+  //     ctx.save();
+  //     ctx.globalCompositeOperation = 'destination-over';
+  //     ctx.fillStyle = options.color || '#99ffff';
+  //     ctx.fillRect(0, 0, chart.width, chart.height);
+  //     ctx.restore();
+  //   }
+  // };
 
 
 

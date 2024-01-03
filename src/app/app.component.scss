@@ -3,21 +3,42 @@
 }
 .header {
   margin: 20px 0;
-.header-container{
+  .header-container {
     display: flex;
     justify-content: center;
     align-items: center;
     text-shadow: 7px 0px 5px rgba(13, 248, 158, 0.671);
-    span{
-        font-size: 20px;
-        font-weight: 400;
-        span{
-            margin-left: 10px;
-            font-weight: 300;
-            font-size: 16px;
-            letter-spacing: 5px;
-        }
+    span {
+      font-size: 20px;
+      font-weight: 400;
+      span {
+        margin-left: 10px;
+        font-weight: 300;
+        font-size: 16px;
+        letter-spacing: 5px;
       }
+    }
+  }
 }
 
+:host {
+  ::ng-deep {
+    .mat-mdc-tab-body-wrapper {
+      height: 80vh;
+      background-image: url("../assets/cover-img.jpg");
+      border-radius: 10px;
+      margin-top: 5px;
+
+    }
+  }
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0.4);
+  z-index: -1;
+  
 }

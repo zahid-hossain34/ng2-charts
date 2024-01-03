@@ -3,16 +3,20 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .chart-container{
-    width: 800px;
-    height: 500px;
+    width: 700px;
+    height: 450px;
     margin: 0 auto;
     margin-top: 30px;
     transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px 20px;
+
 }
 // write responsive code for mobile devices
 @media only screen and (max-width: 768px) {
     .chart-container{
-        width: 600px;
+        width: 500px;
         height: 300px;
         transition: width 0.5s ease-in-out, height 0.5s ease-in-out;
     }
