@@ -55,7 +55,7 @@ export class BarChartComponent {
     },
 
     plugins: {
-
+      
     },
   };
 

@@ -6,18 +6,19 @@
   </div>
   <div class="tabs">
     <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
-      <mat-tab [labelClass]="'label'" label="Line chart">
+      <mat-tab label="Mixin chart">
         <div class="overlay"></div>
-        <app-line-chart></app-line-chart>
+        <app-mixin-chart></app-mixin-chart>
       </mat-tab>
       <mat-tab label="Bar chart">
         <div class="overlay"></div>
         <app-bar-chart></app-bar-chart
       ></mat-tab>
-      <mat-tab label="Mixin chart">
+      <mat-tab label="line chart">
         <div class="overlay"></div>
-        <app-mixin-chart></app-mixin-chart
-      ></mat-tab>
+
+        <app-line-chart></app-line-chart>
+      </mat-tab>
     </mat-tab-group>
   </div>
 </div>
