@@ -1,5 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChartConfiguration, ChartType, Color, Plugin, plugins, scales } from 'chart.js';
+import {
+  ChartConfiguration,
+  ChartType,
+  Color,
+  Plugin,
+  plugins,
+  scales,
+} from 'chart.js';
 import { NgChartsModule } from 'ng2-charts';
 
 @Component({
@@ -9,47 +16,28 @@ import { NgChartsModule } from 'ng2-charts';
   templateUrl: './mixin-chart.component.html',
   styleUrl: './mixin-chart.component.scss',
 })
-export class MixinChartComponent  {
+export class MixinChartComponent {
   public lineChartType: ChartType = 'line';
 
   lines: any = {
     id: 'line',
     afterDraw: (chart: any, args: any, options: any) => {
-      console.log(chart);
-      const {ctx,tooltip,scales:{x,y},chartArea:{top,bottom,left,right,width,height}} = chart
-      // const bep = 4.20;
-      // ctx.beginPath();
-      // ctx.strokeStyle = 'gray';
-      // ctx.lineWidth = 1;
-      // ctx.setLineDash([5, 5]);
-      // ctx.moveTo(x.getPixelForValue(bep), top );
-      // ctx.lineTo(x.getPixelForValue(bep), bottom);
-      // ctx.stroke();
-      // ctx.restore();
-      if(tooltip._active[0]){
+      const {
+        ctx,
+        tooltip,
+        scales: { x, y },
+        chartArea: { top, bottom, left, right, width, height },
+      } = chart;
+      if (tooltip._active[0]) {
         ctx.beginPath();
         ctx.strokeStyle = 'gray';
         ctx.lineWidth = 1;
-        ctx.setLineDash([5, 7]);
-        ctx.moveTo(tooltip._active[0].element.x, top );
+        ctx.setLineDash([5, 5]);
+        ctx.moveTo(tooltip._active[0].element.x, top);
         ctx.lineTo(tooltip._active[0].element.x, bottom);
         ctx.stroke();
         ctx.restore();
       }
-    
-      // let x = chart.tooltip._active[0].element.x;
-      // let yAxis = chart.scales.y;
-      // let ctx = chart.ctx;
-
-      // ctx.save();
-      // ctx.beginPath();
-      // ctx.moveTo(x, yAxis.top);
-      // ctx.lineTo(x, yAxis.bottom);
-      // ctx.lineWidth = 1;
-      // ctx.strokeStyle = '#BFBFBF';
-      // ctx.setLineDash([5, 5]);
-      // ctx.stroke();
-      // ctx.restore();
     },
   };
   public lineChartPlugins: Plugin[] = [this.lines];
@@ -59,21 +47,25 @@ export class MixinChartComponent  {
         type: 'line',
         borderWidth: 1,
         borderColor: 'green',
+        pointRadius: 4,
         pointBackgroundColor: 'green',
         pointHoverBackgroundColor: 'white',
-        pointHoverBorderColor: 'black',
-        pointHoverRadius: 5,
-        pointHitRadius: 10,
+        pointHoverBorderColor: 'green',
+        pointHoverRadius: 6,
+        pointHoverBorderWidth: 1,
         fill: true,
         backgroundColor: ['rgba(84, 185, 72, 0.2)'],
-        data: [5, 3, 4, 10, 8, 9, 2],
+        data: [480, 300, 400, 100, 280, 70, 200],
+        yAxisID: 'yAxisLine',
+        
       },
       {
         type: 'bar',
-        data: [2, 4, 1, 3, 7, 3, 6],
+        data: [200, 150, 30, 330, 500, 430, 60],
         borderColor: 'white',
         borderWidth: 2,
         backgroundColor: '#f1f5f9',
+        yAxisID: 'yAxisBar',
       },
     ],
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -82,15 +74,64 @@ export class MixinChartComponent  {
     responsive: true,
     interaction: {
       mode: 'index',
+      intersect: false,
     },
     scales: {
-      x: {
-        grid: {
-          display: false,
+      yAxisLine: {
+        min: 0,
+        max: 500,
+        ticks: {
+          stepSize: 125,
         },
-
+        title: {
+          text: 'HOURS',
+          display: true,
+          color: 'green',
+          font: {
+            family: 'Comic Sans MS',
+            size: 14,
+          },
+        },
+        border: {
+          color: 'transparent',
+        },
+        position: 'left',
+        
+        grid: {
+          drawTicks: true,
+          display: true,
+          tickBorderDash: [1, 5],
+        
+        },
       },
-      y: {
+      yAxisBar: {
+        min: 0,
+        max: 500,
+        ticks: {
+          stepSize: 125,
+        },
+        title: {
+          text: 'REPORTING',
+          display: true,
+          color: 'olive',
+          font: {
+            family: 'Comic Sans MS',
+            size: 14,
+          },
+        },
+        beginAtZero: true,
+        border: {
+          color: 'transparent',
+        },
+        position: 'right',
+        grid: {
+          drawTicks: true,
+          display: true,
+          tickBorderDash: [1, 5],
+   
+        },
+      },
+      x: {
         beginAtZero: true,
         grid: {
           display: false,
@@ -100,14 +141,19 @@ export class MixinChartComponent  {
     plugins: {
       legend: {
         display: false,
-        // position: 'top',
       },
       tooltip: {
-        usePointStyle: true,
+        padding: 8,
+        bodySpacing: 8,
+        bodyAlign: 'right',
+        titleAlign:'right',
+        titleSpacing: 8,
+        titleFont:{
+          size:14,
+          weight:600
+        },
         callbacks: {
-          label: function (context: any) {
-            console.log(context);
-          },
+          label: function (context: any) {},
         },
       },
     },
