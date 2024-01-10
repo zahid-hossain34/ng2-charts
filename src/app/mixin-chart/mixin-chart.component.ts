@@ -18,8 +18,17 @@ import { NgChartsModule } from 'ng2-charts';
 })
 export class MixinChartComponent implements OnInit {
   public lineChartType: ChartType = 'line';
-  public lineChartDataPoints = [480, 470, 420, 380, 280, 370, 200];
-  public barChartDataPoints = [200, 150, 230, 330, 500, 430, 260];
+  public lineChartDataPoints = [
+    2786.3, 2786.3, 2786.8, 2792.2, 2812.2, 2437.4, 1981.3, 2676.4, 2807.0,
+    2812.7, 2769.4, 2778.7, 2376.4, 1889.9, 3.7, 2583.9, 2861.5, 953.0, 416.9,
+    2433.6, 1915.1, 1964.8, 2880.1, 2915.5, 2910.5, 2877.9, 2544.1, 2078.1,
+    2859.1, 3010.5, 261.0, 261.0,
+  ];
+  public barChartDataPoints = [
+    2512, 2512, 2513, 2524, 2520, 2509, 2498, 2520, 2509, 2524, 2527, 2524,
+    2516, 2505, 2492, 2515, 2530, 2514, 435, 427, 2518, 2505, 2520, 2535, 2530,
+    2526, 2505, 2497, 2517, 2497, 2065, 2065,
+  ];
   ngOnInit(): void {}
   lines: any = {
     id: 'line',
@@ -71,10 +80,44 @@ export class MixinChartComponent implements OnInit {
         yAxisID: 'yAxisBar',
         hoverBorderColor: 'transparent',
         hoverBackgroundColor: '#f1f5f9',
-
+        barPercentage: 1,
       },
     ],
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    // lebels for 1 to 31 days
+
+    labels: [
+      'jan 01',
+      'jan 02',
+      'jan 03',
+      'jan 04',
+      'jan 05',
+      'jan 06',
+      'jan 07',
+      'jan 08',
+      'jan 09',
+      'jan 10',
+      'jan 11',
+      'jan 12',
+      'jan 13',
+      'jan 14',
+      'jan 15',
+      'jan 16',
+      'jan 17',
+      'jan 18',
+      'jan 19',
+      'jan 20',
+      'jan 21',
+      'jan 22',
+      'jan 23',
+      'jan 24',
+      'jan 25',
+      'jan 26',
+      'jan 27',
+      'jan 28',
+      'jan 29',
+      'jan 30',
+      'jan 31',
+    ],
   };
   public lineChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -87,11 +130,7 @@ export class MixinChartComponent implements OnInit {
     },
     scales: {
       yAxisLine: {
-        min: 0,
-        max: 500,
         ticks: {
-          stepSize: 125,
-          maxTicksLimit: 5,
           font: {
             size: 10,
             weight: 'bold',
@@ -113,22 +152,19 @@ export class MixinChartComponent implements OnInit {
         position: 'left',
 
         grid: {
+          drawTicks: false,
           display: true,
           z: 1,
         },
       },
       yAxisBar: {
-        min: 0,
-        max: 500,
         ticks: {
-          stepSize: 125,
-          maxTicksLimit: 5,
           font: {
             size: 10,
             weight: 'bold',
           },
         },
-        
+
         title: {
           text: 'REPORTING',
           display: true,
@@ -149,7 +185,7 @@ export class MixinChartComponent implements OnInit {
         },
       },
       x: {
-        display:false,
+        display: false,
         beginAtZero: true,
         border: {
           display: false,
@@ -163,9 +199,8 @@ export class MixinChartComponent implements OnInit {
       legend: {
         display: false,
       },
-      
+
       tooltip: {
-        xAlign: 'right',
         padding: 8,
         bodySpacing: 8,
         bodyAlign: 'right',
